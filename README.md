@@ -56,3 +56,30 @@ app:
 ```
 4. 切换目录至exif_backend目录，执行maven打包
 ` mvn package`
+在target目录中得到“exif_handle-1.0-SNAPSHOT.jar”文件，运行以下代码启动后端
+` java -jar exif_handle-1.0-SNAPSHOT.jar &`
+
+---
+
+### 部署前端
+
+1. 安装ngixn
+2. 进入exif_frontend目录，运行以下目录打包
+   ```
+   yarn install
+   yarn build
+   ```
+   得到dist目录
+3. 修改nginx配置
+   ```
+   server {
+	    listen 80 default_server;
+        root dist目录;//修改该位置
+        //新增以下代码
+        client_max_body_size 500m;
+        location /api/ {
+		    proxy_pass http://localhost:10000/;
+	    }
+    }
+   
+   ```
