@@ -143,8 +143,8 @@ def exifread_photo(from_path, to_path, log_path):
     result_img[0:height, 0:width] = src_img[0:height, 0:width]
     cv2.imwrite(to_path, result_img)
     image = Image.open(to_path)
-    font1 = ImageFont.truetype("/home/ycx/workspaces/PycharmProjects/cv_test/exif_photo/fonts/font.ttf", font_size)
-    font2 = ImageFont.truetype("/home/ycx/workspaces/PycharmProjects/cv_test/exif_photo/fonts/font.ttf",
+    font1 = ImageFont.truetype("***/font.ttf", font_size)
+    font2 = ImageFont.truetype("***/font.ttf",
                                font_size * fist_row_font_rate)
     drawer = ImageDraw.Draw(image)
 
@@ -157,9 +157,9 @@ def exifread_photo(from_path, to_path, log_path):
     drawer.text((width - max_length, height + new_top), info, fill=(0, 0, 0), font=font1)
     drawer.text((width - max_length, height + new_top + new_middle), photo_time, fill=(150, 150, 150), font=font2)
     image.save(to_path)
-    if make != '' and os.path.exists('/home/ycx/workspaces/PycharmProjects/cv_test/exif_photo/logo/' + make + '.png'):
+    if make != '' and os.path.exists('***/logo/' + make + '.png'):
         result_img = cv2.imread(to_path)
-        logo_img = cv2.imread('/home/ycx/workspaces/PycharmProjects/cv_test/exif_photo/logo/' + make + '.png')
+        logo_img = cv2.imread('***/logo/' + make + '.png')
         logo_img = transparence_to_white(logo_img)
         height1, width1 = logo_img.shape[:2]
         logo_img = cv2.resize(logo_img, (
